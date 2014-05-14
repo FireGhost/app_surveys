@@ -9,8 +9,8 @@
 	<?php echo CHtml::link(CHtml::encode($question->id), array('questions/view', 'id'=>$question->id)); ?>
 	<br />
 	<?php echo CHtml::link(CHtml::encode('Delete'), array('questions/delete', 'id'=>$question->id)); ?>
+    <?php echo CHtml::link(CHtml::encode('Update'), array('questions/update', 'id'=>$question->id)); ?>
 	<br />
-
 	<b><?php echo CHtml::encode($question->getAttributeLabel('type')); ?>:</b>
 	<?php echo CHtml::encode($question->type); ?>
 	<br />

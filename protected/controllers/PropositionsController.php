@@ -35,7 +35,7 @@ class PropositionsController extends Controller
         {
             $proposition->attributes=$_POST['Proposition'];
             if($proposition->save())
-                $this->redirect(array('surveys/update','id'=>$proposition->survey->id));
+                $this->redirect(array('surveys/view','id'=>$proposition->survey->id));
         }
 
         $this->render('update',array(
@@ -64,6 +64,8 @@ class PropositionsController extends Controller
 
 			if($proposition->save())
 				$this->redirect(array('view','id'=>$proposition->id));
+            
+            // TODO: Impossible to save new propositions !!!
 		}
 
 		$this->render('create',array(

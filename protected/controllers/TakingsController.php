@@ -32,6 +32,17 @@ class TakingsController extends Controller
 			'taking'=>$taking,
 		));
 	}
+    
+    /**
+     * Display the taking to respond
+     */
+    public function actionView($id)
+    {
+        $this->render('view',array(
+            'taking'=>$this->loadTaking($id),
+        ));
+    }
+    
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

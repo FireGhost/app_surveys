@@ -36,5 +36,9 @@
 	<b><?php echo CHtml::encode($proposition->getAttributeLabel('position')); ?>:</b>
 	<?php echo CHtml::encode($proposition->position); ?>
 	<br />
+    
+    <b><?php echo CHtml::encode($proposition->getAttributeLabel('answer_format')); ?>:</b>
+	<?php echo CHtml::encode($proposition->answer_format); ?>
+	<br />
 
 </div>
