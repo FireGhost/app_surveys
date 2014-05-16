@@ -37,4 +37,7 @@
 		}
 	?>
 
+	<?php echo CHtml::link("New Proposition", array('questions/' . $question->id . '/propositions/create')); 
+	// TODO : don't show for some type of questions? Depending on the number of propositions? ?>
+
 </div>

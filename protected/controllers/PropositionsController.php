@@ -35,7 +35,7 @@ class PropositionsController extends Controller
         {
             $proposition->attributes=$_POST['Proposition'];
             if($proposition->save())
-                $this->redirect(array('surveys/update','id'=>$proposition->survey->id));
+                $this->redirect(array('surveys/view','id'=>$proposition->survey->id));
         }
 
         $this->render('update',array(
@@ -58,12 +58,12 @@ class PropositionsController extends Controller
 		{
 			$proposition->attributes=$_POST['Proposition'];
 
-			$proposition->question = $this->question;
+			$proposition->question_id = $this->question->id;
 			
         	$proposition->position = $proposition->question->maxProposition+1;
 
 			if($proposition->save())
-				$this->redirect(array('view','id'=>$proposition->id));
+				$this->redirect(array('surveys/view','id'=>$proposition->survey->id));
 		}
 
 		$this->render('create',array(
