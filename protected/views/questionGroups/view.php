@@ -29,11 +29,13 @@
 	<b><?php echo CHtml::encode($questionGroup->getAttributeLabel('position')); ?>:</b>
 	<?php echo CHtml::encode($questionGroup->position); ?>
 	<br />
-	<!-- TODO: Add a button to create a new question in the group (groups/id/index ???)
-		 TODO: Add a button and dropdown list to add an existing question in the group? -->
+	<!-- TODO: Add a button and dropdown list/filter to add an existing question in the group? -->
 	<?php
 		foreach ($questionGroup->questions as $question) {
 			echo CController::renderPartial("//questions/view", array('question'=>$question));
 		}
 	?>
+
+	<?php echo CHtml::link("New Question", array('groups/' . $questionGroup->id . '/questions/create')); ?>
+
 </div>
