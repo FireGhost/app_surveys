@@ -38,5 +38,6 @@
 		echo CController::renderPartial("//questionGroups/view", array('questionGroup'=>$questionGroup));
 	}
   ?>
+  <?php echo CHtml::link("New Question Group", array('surveys/' . $survey->id . '/questionGroups/create')); ?>
   
 </div>
