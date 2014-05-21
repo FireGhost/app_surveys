@@ -14,7 +14,7 @@
 	?>
 	<br />
 	<?php
-	echo CHtml::link("Delete", array('questionGroups/delete', 'id'=>$questionGroup->id)); 
+	echo CHtml::link("Delete", array('questionGroups/delete', 'id'=>$questionGroup->id));
 	?>
 	<br />
 
