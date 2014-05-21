@@ -8,7 +8,7 @@
 	<?php echo CHtml::link("Update", array('update', 'id'=>$data->id)); ?>
 	<?php echo CHtml::link("Delete", array('delete', 'id'=>$data->id)); ?>
 	<br />
-
+	<?php echo ($data->hasStartedTakings() ? 'LOCKED' : ''); //TODO : in the end we should just add a class to the div and color the background in red?><br />
 	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
