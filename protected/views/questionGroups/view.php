@@ -10,11 +10,11 @@
 	<!-- TODO: Verif -->
 	<br />
 	<?php 
-	echo CHtml::link("Update", array('questionGroups/update', 'id'=>$questionGroup->id));
+	echo CHtml::link("Modifier", array('questionGroups/update', 'id'=>$questionGroup->id));
 	?>
 	<br />
 	<?php
-	echo CHtml::link("Delete", array('questionGroups/delete', 'id'=>$questionGroup->id));
+	echo CHtml::link("Supprimer", array('questionGroups/delete', 'id'=>$questionGroup->id));
 	?>
 	<br />
 
@@ -36,6 +36,6 @@
 		}
 	?>
 
-	<?php echo CHtml::link("New Question", array('groups/' . $questionGroup->id . '/questions/create')); ?>
+	<?php echo CHtml::link("Nouvelle question", array('groups/' . $questionGroup->id . '/questions/create')); ?>
 
 </div>

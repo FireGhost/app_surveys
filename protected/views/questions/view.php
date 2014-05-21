@@ -8,8 +8,8 @@
 	<b><?php echo CHtml::encode($question->getAttributeLabel('id')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($question->id), array('questions/view', 'id'=>$question->id)); ?>
 	<br />
-	<?php echo CHtml::link(CHtml::encode('Delete'), array('questions/delete', 'id'=>$question->id)); ?>
-    <?php echo CHtml::link(CHtml::encode('Update'), array('questions/update', 'id'=>$question->id)); ?>
+	<?php echo CHtml::link(CHtml::encode('Supprimer'), array('questions/delete', 'id'=>$question->id)); ?>
+    <?php echo CHtml::link(CHtml::encode('Modifier'), array('questions/update', 'id'=>$question->id)); ?>
 	<br />
 	<b><?php echo CHtml::encode($question->getAttributeLabel('type')); ?>:</b>
 	<?php echo CHtml::encode($question->type); ?>
@@ -37,7 +37,7 @@
 		}
 	?>
 
-	<?php echo CHtml::link("New Proposition", array('questions/' . $question->id . '/propositions/create')); 
+	<?php echo CHtml::link("Nouvelle proposition", array('questions/' . $question->id . '/propositions/create')); 
 	// TODO : don't show for some type of questions? Depending on the number of propositions? ?>
 
 </div>

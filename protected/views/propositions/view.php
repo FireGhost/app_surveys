@@ -9,15 +9,15 @@
 	<?php echo CHtml::link(CHtml::encode($proposition->id), array('propositions/view', 'id'=>$proposition->id)); ?>
 	<br />
 	<?php 
-	echo CHtml::link("Update", array('propositions/update', 'id'=>$proposition->id));
+	echo CHtml::link("Modifier", array('propositions/update', 'id'=>$proposition->id));
 	?>
 	<br />
 	<?php
-	echo CHtml::link("Delete", array('delete', 'id'=>$proposition->id)); 
+	echo CHtml::link("Supprimer", array('delete', 'id'=>$proposition->id)); 
 	?>
 	<br /> 
 	<?php
-	echo CHtml::link("Create", array('create', 'id'=>$proposition->id)); 
+	echo CHtml::link("Créer", array('create', 'id'=>$proposition->id)); 
 	?>
     <br />
    

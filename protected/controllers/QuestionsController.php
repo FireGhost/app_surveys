@@ -82,7 +82,7 @@ class QuestionsController extends Controller
 
             // Prepare the 'settings' field for the DB
             // WARNING: array_filter will delete the '0' entries
-            $_POST['Question']['settings'] = json_encode( array_filter($_POST['Question']['settings']);
+            $_POST['Question']['settings'] = json_encode( array_filter($_POST['Question']['settings']));
 
             $question->attributes=$_POST['Question'];
             if($question->save())

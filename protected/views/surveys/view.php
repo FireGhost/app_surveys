@@ -1,7 +1,7 @@
 <h1>View Survey #<?php echo $survey->id; ?></h1>
-	<?php echo CHtml::link("View", array('view', 'id'=>$survey->id)); ?>
-	<?php echo CHtml::link("Update", array('update', 'id'=>$survey->id)); ?>
-	<?php echo CHtml::link("Delete", array('delete', 'id'=>$survey->id)); ?>
+	<?php echo CHtml::link("Détails", array('view', 'id'=>$survey->id)); ?>
+	<?php echo CHtml::link("Modifier", array('update', 'id'=>$survey->id)); ?>
+	<?php echo CHtml::link("Supprimer", array('delete', 'id'=>$survey->id)); ?>
 
 
 <div class="view">
@@ -38,6 +38,6 @@
 		echo CController::renderPartial("//questionGroups/view", array('questionGroup'=>$questionGroup));
 	}
   ?>
-  <?php echo CHtml::link("New Question Group", array('surveys/' . $survey->id . '/questionGroups/create')); ?>
+  <?php echo CHtml::link("Nouveau groupe de questions", array('surveys/' . $survey->id . '/questionGroups/create')); ?>
   
 </div>
