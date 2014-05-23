@@ -2,17 +2,23 @@
 /* @var $this SurveyController */
 /* @var $data Survey */
 ?>
+<?php $locked = $data->hasStartedTakings() ?>
+<div class="view <?php echo ($locked ? 'locked-survey' : '');?>">
+	<?php 
+		if(!$locked) {
+			echo CHtml::link("Détails", array('view', 'id'=>$data->id)) . " " .
+		  	     CHtml::link("Supprimer", array('delete', 'id'=>$data->id)) . "<br />";
+		}
+		else {
+			echo "Sondage vérouillé. <br />";
+		}
+	?>
 
-<div class="view">
-	<?php echo CHtml::link("Détails", array('view', 'id'=>$data->id)); ?>
-	<?php echo CHtml::link("Supprimer", array('delete', 'id'=>$data->id)); ?>
-	<br />
-	<?php echo ($data->hasStartedTakings() ? 'LOCKED' : ''); //TODO : in the end we should just add a class to the div and color the background in red?><br />
 	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Titre')); ?>:</b>
 	<?php echo CHtml::encode($data->title); ?>
 	<br />
 
@@ -20,23 +26,23 @@
 	<?php echo CHtml::encode($data->description); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('created_for_id')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Créé pour')); ?>:</b>
 	<?php echo CHtml::encode($data->created_for_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('created_by_id')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Créé par')); ?>:</b>
 	<?php echo CHtml::encode($data->created_by_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('created_at')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Date de création')); ?>:</b>
 	<?php echo CHtml::encode($data->created_at); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_by_id')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Modifié par')); ?>:</b>
 	<?php echo CHtml::encode($data->updated_by_id); ?>
 	<br />
 	
-	<b><?php echo CHtml::encode($data->getAttributeLabel('updated_at')); ?>:</b>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('Date de modification')); ?>:</b>
 	<?php echo CHtml::encode($data->updated_at); ?>
 	<br />
 
