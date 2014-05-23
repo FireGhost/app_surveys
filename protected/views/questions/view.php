@@ -5,26 +5,17 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($question->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($question->id), array('questions/view', 'id'=>$question->id)); ?>
+	<b>Question</b>
 	<br />
+	<?php echo CHtml::link(CHtml::encode('Modifier'), array('questions/update', 'id'=>$question->id)); ?>
 	<?php echo CHtml::link(CHtml::encode('Supprimer'), array('questions/delete', 'id'=>$question->id)); ?>
-    <?php echo CHtml::link(CHtml::encode('Modifier'), array('questions/update', 'id'=>$question->id)); ?>
 	<br />
 	<b><?php echo CHtml::encode($question->getAttributeLabel('type')); ?>:</b>
 	<?php echo CHtml::encode($question->type); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($question->getAttributeLabel('question_group_id')); ?>:</b>
-	<?php echo CHtml::encode($question->question_group_id); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($question->getAttributeLabel('title')); ?>:</b>
 	<?php echo CHtml::encode($question->title); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($question->getAttributeLabel('position')); ?>:</b>
-	<?php echo CHtml::encode($question->position); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($question->getAttributeLabel('settings')); ?>:</b>
