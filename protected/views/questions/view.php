@@ -10,15 +10,16 @@
 	<?php echo CHtml::link(CHtml::encode('Modifier'), array('questions/update', 'id'=>$question->id)); ?>
 	<?php echo CHtml::link(CHtml::encode('Supprimer'), array('questions/delete', 'id'=>$question->id)); ?>
 	<br />
+
+	<b><?php echo CHtml::encode($question->getAttributeLabel('Titre')); ?>:</b>
+	<?php echo CHtml::encode($question->title); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($question->getAttributeLabel('type')); ?>:</b>
 	<?php echo CHtml::encode($question->type); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($question->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($question->title); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($question->getAttributeLabel('settings')); ?>:</b>
+	<b><?php echo CHtml::encode($question->getAttributeLabel('Options')); ?>:</b>
 	<?php echo CHtml::encode($question->settings); ?>
 	<br />
 

@@ -4,31 +4,31 @@
 
 
 <div class="view">
-	<b><?php echo CHtml::encode($survey->getAttributeLabel('title')); ?>:</b>
+	<b><?php echo CHtml::encode($survey->getAttributeLabel('Titre')); ?>:</b>
 	<?php echo CHtml::encode($survey->title); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($survey->getAttributeLabel('description')); ?>:</b>
+	<b><?php echo CHtml::encode($survey->getAttributeLabel('Description')); ?>:</b>
 	<?php echo CHtml::encode($survey->description); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($survey->getAttributeLabel('created_for_id')); ?>:</b>
+	<b><?php echo CHtml::encode($survey->getAttributeLabel('Créé pour')); ?>:</b>
 	<?php echo CHtml::encode($survey->created_for_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($survey->getAttributeLabel('created_by_id')); ?>:</b>
+	<b><?php echo CHtml::encode($survey->getAttributeLabel('Créé par')); ?>:</b>
 	<?php echo CHtml::encode($survey->created_by_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($survey->getAttributeLabel('created_at')); ?>:</b>
+	<b><?php echo CHtml::encode($survey->getAttributeLabel('Date de création')); ?>:</b>
 	<?php echo CHtml::encode($survey->created_at); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($survey->getAttributeLabel('updated_by_id')); ?>:</b>
+	<b><?php echo CHtml::encode($survey->getAttributeLabel('Modifié par')); ?>:</b>
 	<?php echo CHtml::encode($survey->updated_by_id); ?>
 	<br />
 	
-	<b><?php echo CHtml::encode($survey->getAttributeLabel('updated_at')); ?>:</b>
+	<b><?php echo CHtml::encode($survey->getAttributeLabel('Date de modification')); ?>:</b>
 	<?php echo CHtml::encode($survey->updated_at); ?>
 	<br /><br />
 

@@ -10,7 +10,7 @@
 	<?php echo CHtml::link("Supprimer", array('questionGroups/delete', 'id'=>$questionGroup->id));?>
 	<br />
 
-	<b><?php echo CHtml::encode($questionGroup->getAttributeLabel('title')); ?>:</b>
+	<b><?php echo CHtml::encode($questionGroup->getAttributeLabel('Titre')); ?>:</b>
 	<?php echo CHtml::encode($questionGroup->title); ?>
 	<br />
 

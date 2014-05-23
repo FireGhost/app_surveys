@@ -9,7 +9,7 @@
 	<?php echo CHtml::link("Supprimer", array('delete', 'id'=>$proposition->id));?>
 	<br /> 
 
-    <b><?php echo CHtml::encode($proposition->getAttributeLabel('title')); ?>:</b>
+    <b><?php echo CHtml::encode($proposition->getAttributeLabel('Titre')); ?>:</b>
 	<?php echo CHtml::encode($proposition->title); ?>
 	<br />
     
@@ -17,7 +17,7 @@
 	<?php echo CHtml::encode($proposition->type); ?>
 	<br />
     
-    <b><?php echo CHtml::encode($proposition->getAttributeLabel('answer_format')); ?>:</b>
+    <b><?php echo CHtml::encode($proposition->getAttributeLabel('Format de réponse')); ?>:</b>
 	<?php echo CHtml::encode($proposition->answer_format); ?>
 	<br />
 
