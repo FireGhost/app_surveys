@@ -52,7 +52,8 @@ class Survey extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'questionGroups' => array(self::HAS_MANY, 'QuestionGroup', 'survey_id'),
+            'questionGroups' => array(self::HAS_MANY, 'QuestionGroup', 'survey_id'),
+            'questions' => array(self::HAS_MANY, 'Question', array('id' => 'question_group_id'), 'through'=>'questionGroups'),
 			'takings' => array(self::HAS_MANY, 'Taking', 'survey_id'),
 			'maxQuestionGroup' => array(self::STAT, 'QuestionGroup', 'survey_id', 'select'=>'MAX(position)')
 		);

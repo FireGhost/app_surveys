@@ -43,6 +43,37 @@ class TakingsController extends Controller
         ));
     }
     
+    
+    /**
+     * Will save the answers of a respondant
+     */
+    public function actionSaveAnswers($id)
+    {
+        $taking = $this->loadTaking($id);
+         
+        if (isset($_POST) && !empty($_POST)) {
+             
+            $participation = Participation::model()->findByPk(1); // TODO: Get the correct participation
+             
+            foreach ($_POST['Questions'] as $qid => $data) {
+                if ( $question = $taking->survey->questions( array('condition'=>'questions.id='.$qid) )[0] ) {
+                    
+                    $userInput = ( isset($_POST['UserInputs'][$qid]) ? $_POST['UserInputs'][$qid] : null );
+                    if (! $question->saveAnswer($data, $participation, $userInput) ) {
+                        $this->render('view',array(
+                            'taking'=>$taking,
+                        ));
+                    }
+                    
+                }
+            }
+        }
+        
+        $this->render('index',array(
+            'taking'=>$taking,
+        ));
+     }
+    
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
