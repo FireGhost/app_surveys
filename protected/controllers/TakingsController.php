@@ -21,7 +21,7 @@ class TakingsController extends Controller
 
 		if(isset($_POST['Taking']))
 		{
-			$taking->survey_id = 1; //TODO: get that ID automatically. See the work on "questions" done by FireGhost
+			$taking->survey_id = $this->survey_id;
 			$taking->state = "created";
 			$taking->attributes=$_POST['Taking'];
 			if($taking->save())

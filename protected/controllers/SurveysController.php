@@ -8,6 +8,14 @@ class SurveysController extends Controller
 	 */
 	public $layout='//layouts/column2';
 
+
+	public function filters()
+    {
+        return array(
+            'CanModifySurvey + update, delete'
+        );
+    }
+
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -30,6 +38,30 @@ class SurveysController extends Controller
 			'survey'=>$survey,
 		));
 	}
+
+
+	 /**
+     * Updates a survey.
+     * If update is successful, the browser will be redirected to the survey's update page
+     * @param integer $id the ID of the survey to be updated
+     */
+    public function actionUpdate($id)
+    {
+        $survey=$this->loadsurvey($id);
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($survey);
+        if(isset($_POST['Survey']))
+        {
+            $survey->attributes=$_POST['Survey'];
+            if($survey->save())
+                $this->redirect(array('surveys/view','id'=>$survey->id));
+        }
+
+        $this->render('update',array(
+            'survey'=>$survey,
+        ));
+    }
 
 	public function actionIndex()
 	{
@@ -64,4 +96,12 @@ class SurveysController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $survey;
 	}
+
+	/**
+     * Throw an error message when the survey is locked
+     */
+    public function filterCanModifySurvey($filterChain)
+    {
+        $this->canModifySurvey($filterChain, $this->loadSurvey($_GET['id']));
+    }
 }
