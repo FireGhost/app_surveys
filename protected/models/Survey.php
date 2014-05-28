@@ -19,6 +19,37 @@
  */
 class Survey extends CActiveRecord
 {
+
+	public function getCreatedByName()
+	{
+		$intranetUser = new IntranetUser;
+		$user = $intranetUser->find($this->created_by_id);
+		if (!$user === false)
+			return $user->name;
+		else
+			return $intranetUser->error_message;
+	}
+
+	public function getUpdatedByName()
+	{
+		$intranetUser = new IntranetUser;
+		$user = $intranetUser->find($this->updated_by_id);
+		if (!$user === false)
+			return $user->name;
+		else
+			return $intranetUser->error_message;
+	}
+
+	public function getCreatedForName()
+	{
+		$intranetUser = new IntranetUser;
+		$user = $intranetUser->find($this->created_for_id);
+		if (!$user === false)
+			return $user->name;
+		else
+			return $intranetUser->error_message;
+	}
+
 	/**
 	 * @return string the associated database table name
 	 */
