@@ -20,6 +20,7 @@
 class Survey extends CActiveRecord
 {
 
+	//TODO : Better error handling and object return
 	public function getCreatedByName()
 	{
 		$intranetUser = new IntranetUser;
