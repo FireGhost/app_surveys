@@ -33,12 +33,12 @@ class AnsweredProposition extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('participation_id, proposition_id', 'required'),
-			array('participation_id, proposition_id, position', 'numerical', 'integerOnly'=>true),
+			array('participation_id, proposition_id, value', 'numerical', 'integerOnly'=>true),
             array('created_at, updated_at', 'safe'),
 			array('body', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, participation_id, proposition_id, body, position created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, participation_id, proposition_id, body, value, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,7 +65,7 @@ class AnsweredProposition extends CActiveRecord
 			'participation_id' => 'Participation',
 			'proposition_id' => 'Proposition',
 			'body' => 'Body',
-			'position' => 'Position',
+			'value' => 'Value',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
 		);
@@ -93,7 +93,7 @@ class AnsweredProposition extends CActiveRecord
 		$criteria->compare('participation_id',$this->participation_id);
 		$criteria->compare('proposition_id',$this->proposition_id);
 		$criteria->compare('body',$this->body,true);
-		$criteria->compare('position',$this->position);
+		$criteria->compare('value',$this->value);
         $criteria->compare('created_at',$this->created_at,true);
         $criteria->compare('updated_at',$this->updated_at,true);
 
