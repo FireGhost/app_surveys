@@ -27,11 +27,11 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Créé pour')); ?>:</b>
-	<?php echo CHtml::encode($data->created_for_id); ?>
+	<?php echo CHtml::encode($data->createdforname); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Créé par')); ?>:</b>
-	<?php echo CHtml::encode($data->created_by_id); ?>
+	<?php echo CHtml::encode($data->createdbyname); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Date de création')); ?>:</b>
@@ -39,7 +39,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Modifié par')); ?>:</b>
-	<?php echo CHtml::encode($data->updated_by_id); ?>
+	<?php echo CHtml::encode($data->updatedbyname); ?>
 	<br />
 	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Date de modification')); ?>:</b>

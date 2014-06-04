@@ -13,11 +13,11 @@
 	<br />
 
 	<b><?php echo CHtml::encode($survey->getAttributeLabel('Créé pour')); ?>:</b>
-	<?php echo CHtml::encode($survey->created_for_id); ?>
+	<?php echo CHtml::encode($survey->createdforname); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($survey->getAttributeLabel('Créé par')); ?>:</b>
-	<?php echo CHtml::encode($survey->created_by_id); ?>
+	<?php echo CHtml::encode($survey->createdbyname); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($survey->getAttributeLabel('Date de création')); ?>:</b>
@@ -25,7 +25,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($survey->getAttributeLabel('Modifié par')); ?>:</b>
-	<?php echo CHtml::encode($survey->updated_by_id); ?>
+	<?php echo CHtml::encode($survey->updatedbyname); ?>
 	<br />
 	
 	<b><?php echo CHtml::encode($survey->getAttributeLabel('Date de modification')); ?>:</b>
