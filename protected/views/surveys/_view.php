@@ -3,7 +3,7 @@
 /* @var $data Survey */
 ?>
 <?php $locked = $data->hasStartedTakings() ?>
-<div class="view <?php echo ($locked ? 'locked-survey' : '');?>">
+<div class="view <?php echo ($locked ? 'locked-element' : '');?>">
 	<?php 
 		if(!$locked) {
 			echo CHtml::link("Détails", array('view', 'id'=>$data->id)) . " " .
