@@ -13,24 +13,38 @@ class UniqueChoiceQuestion extends Question
         return parent::model($className);
     }
     
+    
     public function saveAnswer($propositionId, $participation, $userInputs=null)
     {
+        
+        // Need to get all the propositions of this question
+        $allPropositionsIds[0] = null;
+        foreach ($this->propositions as $i=>$proposition)
+            $allPropositionsIds[$i] = $proposition->id;
+        
+        // Start a transaction
+        $model = AnsweredProposition::model();
+        $transaction = $model->dbConnection->beginTransaction();
+        
+        
+        // Get the creation date if answers for this question already exists. If it exists, delete all
+        $criteria = new CDbCriteria;
+        $criteria->addCondition('participation_id=:participation_id');
+        $criteria->params = array(':participation_id' => $participation->id);
+        $criteria->addInCondition('proposition_id', $allPropositionsIds);
+        
+        if ($answeredProposition = $model->find($criteria)) {
+            $createdAt = new DateTime($answeredProposition->created_at);
+            $model->deleteAll($criteria);
+        }
+        else
+            $createdAt = new DateTime();
+
         
         $date = new DateTime();
         
         
-        // Retriving existing answer
-        $criteria = new CDbCriteria;
-        $criteria->addCondition('participation_id=:participation_id');
-        $criteria->addCondition('proposition_id=:prop_id');
-        $criteria->params = array(':participation_id' => $participation->id, ':prop_id' => $propositionId);
-        
-        // Modifying answer or create new one
-        if (! ($answeredProposition = AnsweredProposition::model()->find($criteria)) ) {
-            $answeredProposition = new AnsweredProposition;
-            $answeredProposition->created_at = $date->format('Y-m-d H:i:s');
-        }
-        
+        $answeredProposition = new AnsweredProposition;
         
         $answeredProposition->proposition_id = $propositionId;
         $answeredProposition->participation_id = $participation->id;
@@ -39,10 +53,13 @@ class UniqueChoiceQuestion extends Question
         $answeredProposition->updated_at = $date->format('Y-m-d H:i:s');
         
         // Save the answer
-        if (! $answeredProposition->save() )
+        if (! $answeredProposition->save() ) {
+            $transaction->rollback();
             return false;
+        }
         
         
+        $transaction->commit();
         return true;
     }
 }

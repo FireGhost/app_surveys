@@ -18,7 +18,9 @@ class RankingQuestion extends Question
         
         $date = new DateTime();
         
-        // TODO: put in mysql transaction
+        $model = AnsweredProposition::model();
+        $transaction = $model->dbConnection->beginTransaction();
+        
         foreach ($propPositions as $pid => $position) {
             
             // Retriving existing answer
@@ -28,7 +30,7 @@ class RankingQuestion extends Question
             $criteria->params = array(':participation_id' => $participation->id, ':prop_id' => $pid);
             
             // Modifying answer or create new one
-            if (! ($answeredProposition = AnsweredProposition::model()->find($criteria)) ) {
+            if (! ($answeredProposition = $model->find($criteria)) ) {
                 $answeredProposition = new AnsweredProposition;
                 $answeredProposition->created_at = $date->format('Y-m-d H:i:s');
             }
@@ -42,12 +44,14 @@ class RankingQuestion extends Question
             $answeredProposition->updated_at = $date->format('Y-m-d H:i:s');
             
             // Save the answer
-            if (! $answeredProposition->save() )
+            if (! $answeredProposition->save() ) {
+                $transaction->rollback();
                 return false;
+            }
             
         }
         
-        
+        $transaction->commit();
         return true;
     }
 }
