@@ -4,6 +4,7 @@
 ?>
 
 <div class="view">
+    <?php echo ($this->isLocked($taking->id) ? '<div class="view locked-element">Ce taking est verrouillé</div>' : '' ); ?>
     <?php echo CHtml::beginForm(array('saveAnswers', 'id' => $taking->id)); ?>
     <b><?php echo CHtml::encode($taking->survey->title); ?></b><br />
     <?php echo CHtml::encode($taking->comment); ?><br />
@@ -12,6 +13,6 @@
             echo CController::renderPartial("//questionGroups/viewRespondent", array('questionGroup'=>$questionGroup));
         }
     ?>
-    <?php echo CHtml::submitButton('Envoyer'); ?>
+    <?php echo (! $this->isLocked($taking->id) ? CHtml::submitButton('Envoyer') : ''); ?>
     <?php echo CHtml::endForm(); ?>
 </div>

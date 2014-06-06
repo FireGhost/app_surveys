@@ -7,6 +7,8 @@ class TakingsController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+    
+    
 
 	/**
 	 * Creates a new model.
@@ -125,4 +127,21 @@ class TakingsController extends Controller
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $taking;
 	}
+    
+    /**
+     * Return true if the end date of this taking is out-of-date
+     * @param integer $id The ID of the taking
+     * @return True or False. Explicit enough
+     */
+    public function isLocked($id)
+    {
+        $taking = $this->loadTaking($id);
+        
+        $date = new DateTime();
+        if ($date->format('Y-m-d H:i:s') > $taking->ends_at)
+            return true;
+        else
+            return false;
+    }
+    
 }
