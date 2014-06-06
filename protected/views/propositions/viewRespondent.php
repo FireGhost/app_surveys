@@ -7,5 +7,5 @@
     echo CHtml::encode($proposition->title);
     
     if ($proposition->type == "OpenedProposition")
-        echo ': '. CHtml::textField('userInsert_'. $proposition->id);
+        echo ': '. CHtml::textField('UserInputs['. $proposition->question->id .']['. $proposition->id .']');
 ?>

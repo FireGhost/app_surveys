@@ -227,3 +227,8 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+/*Modifs*/
+.locked-element {
+	background-color: #F2CECE;
+}

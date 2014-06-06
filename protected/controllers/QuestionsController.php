@@ -41,7 +41,7 @@ class QuestionsController extends Controller
             
             $question->attributes=$_POST['Question'];
             if ($question->save())
-                $this->redirect(array('survey/update', 'id'=>$question->survey->id));
+                $this->redirect(array('surveys/view', 'id'=>$question->survey->id)); //TODO : Ancre pour scroller automatiquement jusqu'a la question que l'on vient de créer?
         }
         else {
             $question = new Question;
@@ -79,13 +79,18 @@ class QuestionsController extends Controller
         // $this->performAjaxValidation($question);
         if(isset($_POST['Question']))
         {
+
+            // Prepare the 'settings' field for the DB
+            // WARNING: array_filter will delete the '0' entries
+            $_POST['Question']['settings'] = json_encode( array_filter($_POST['Question']['settings']));
+
             $question->attributes=$_POST['Question'];
             if($question->save())
                 $this->redirect(array('surveys/view','id'=>$question->survey->id));
         }
 
         $this->render('update',array(
-            'question'=>$question,
+            'question'=>$question, //TODO: load the json in settings and transmit it to the view
         ));
     }
     

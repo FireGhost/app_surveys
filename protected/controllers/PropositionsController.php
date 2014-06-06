@@ -58,14 +58,12 @@ class PropositionsController extends Controller
 		{
 			$proposition->attributes=$_POST['Proposition'];
 
-			$proposition->question = $this->question;
+			$proposition->question_id = $this->question->id;
 			
         	$proposition->position = $proposition->question->maxProposition+1;
 
 			if($proposition->save())
-				$this->redirect(array('view','id'=>$proposition->id));
-            
-            // TODO: Impossible to save new propositions !!!
+				$this->redirect(array('surveys/view','id'=>$proposition->survey->id));
 		}
 
 		$this->render('create',array(

@@ -19,6 +19,38 @@
  */
 class Survey extends CActiveRecord
 {
+
+	//TODO : Better error handling and object return
+	public function getCreatedByName()
+	{
+		$intranetUser = new IntranetUser;
+		$user = $intranetUser->find($this->created_by_id);
+		if (!$user === false)
+			return $user->name;
+		else
+			return $intranetUser->error_message;
+	}
+
+	public function getUpdatedByName()
+	{
+		$intranetUser = new IntranetUser;
+		$user = $intranetUser->find($this->updated_by_id);
+		if (!$user === false)
+			return $user->name;
+		else
+			return $intranetUser->error_message;
+	}
+
+	public function getCreatedForName()
+	{
+		$intranetUser = new IntranetUser;
+		$user = $intranetUser->find($this->created_for_id);
+		if (!$user === false)
+			return $user->name;
+		else
+			return $intranetUser->error_message;
+	}
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -52,7 +84,8 @@ class Survey extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'questionGroups' => array(self::HAS_MANY, 'QuestionGroup', 'survey_id'),
+            'questionGroups' => array(self::HAS_MANY, 'QuestionGroup', 'survey_id'),
+            'questions' => array(self::HAS_MANY, 'Question', array('id' => 'question_group_id'), 'through'=>'questionGroups'),
 			'takings' => array(self::HAS_MANY, 'Taking', 'survey_id'),
 			'maxQuestionGroup' => array(self::STAT, 'QuestionGroup', 'survey_id', 'select'=>'MAX(position)')
 		);
