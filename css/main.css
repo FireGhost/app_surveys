@@ -228,6 +228,11 @@ div.search-form
 	background: #80CFFF;
 }
 
-.locked-survey {
+/*Modifs*/
+.locked-element {
 	background-color: #F2CECE;
+}
+
+.view a {
+	color: #111;
 }

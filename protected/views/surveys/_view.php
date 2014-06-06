@@ -3,47 +3,18 @@
 /* @var $data Survey */
 ?>
 <?php $locked = $data->hasStartedTakings() ?>
-<div class="view <?php echo ($locked ? 'locked-survey' : '');?>">
+<div class="view <?php echo ($locked ? 'locked-element' : '');?>">
 	<?php 
 		if(!$locked) {
-			echo CHtml::link("Détails", array('view', 'id'=>$data->id)) . " " .
-		  	     CHtml::link("Supprimer", array('delete', 'id'=>$data->id)) . "<br />";
+			echo CHtml::link("<img ", array('view', 'id'=>$data->id)) . " " .
+		  	     CHtml::link("Supprimer", array('delete', 'id'=>$data->id)) . "<br />"; //add icons
+		  	$title = "Détails du sondage";
 		}
 		else {
-			echo "Sondage vérouillé. <br />";
+			$title = "Sondage vérouillé";
 		}
 	?>
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Titre')); ?>:</b>
-	<?php echo CHtml::encode($data->title); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
+	<?php echo CHtml::link("<h4>".CHtml::encode($data->title)."</h4>", array('view', 'id'=>$data->id), array('title'=>$title)); ?>
 	<?php echo CHtml::encode($data->description); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Créé pour')); ?>:</b>
-	<?php echo CHtml::encode($data->createdforname); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Créé par')); ?>:</b>
-	<?php echo CHtml::encode($data->createdbyname); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Date de création')); ?>:</b>
-	<?php echo CHtml::encode($data->created_at); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Modifié par')); ?>:</b>
-	<?php echo CHtml::encode($data->updatedbyname); ?>
-	<br />
-	
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Date de modification')); ?>:</b>
-	<?php echo CHtml::encode($data->updated_at); ?>
-	<br />
 
 </div>
