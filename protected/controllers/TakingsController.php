@@ -50,6 +50,9 @@ class TakingsController extends Controller
         if(isset($_POST['Taking']))
         {
             $taking->attributes=$_POST['Taking'];
+            $taking->starts_at= date('Y-m-d H:i:s',strtotime($taking->starts_at));
+            $taking->ends_at= date('Y-m-d H:i:s',strtotime($taking->ends_at));
+
             if($taking->save())
                 $this->redirect(array('surveys/view','id'=>$taking->survey->id));
         }

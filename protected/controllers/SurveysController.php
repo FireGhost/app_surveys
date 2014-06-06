@@ -30,12 +30,23 @@ class SurveysController extends Controller
 		if(isset($_POST['Survey']))
 		{
 			$survey->attributes=$_POST['Survey'];
+			$now = new DateTime();
+			$survey->created_at = $now->format("Y-m-d H:i:s");
 			if($survey->save())
 				$this->redirect(array('view','id'=>$survey->id));
+		}
+		else {
+			$intranetUser = new IntranetUser;
+	        $usersObject = $intranetUser->find("all");
+
+	        foreach ($usersObject as $userSimple) {
+	        	$users[$userSimple->id] = $userSimple->name;
+        	}
 		}
 
 		$this->render('create',array(
 			'survey'=>$survey,
+			'users'=>$users,
 		));
 	}
 
@@ -54,6 +65,8 @@ class SurveysController extends Controller
         if(isset($_POST['Survey']))
         {
             $survey->attributes=$_POST['Survey'];
+            $now = new DateTime();
+			$survey->updated_at = $now->format("Y-m-d H:i:s");
             if($survey->save())
                 $this->redirect(array('surveys/view','id'=>$survey->id));
         }

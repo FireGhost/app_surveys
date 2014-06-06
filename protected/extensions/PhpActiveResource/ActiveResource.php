@@ -34,7 +34,9 @@ ActiveResource::$marshaller = new TypeMarshaller(array(
   'Cpnv::Teacher' => 'IntranetUser',
   'Cpnv::HeadTeacher' => 'IntranetUser',
   'Cpnv::Dean' => 'IntranetUser',
-  'Cpnv::Class' => 'IntranetClass'
+  'Cpnv::Class' => 'IntranetClass',
+  'Cpnv::GenericStudent' => 'IntranetUser',
+  'Cpnv::User' => 'IntranetUser'
 ));
 
 ?>
