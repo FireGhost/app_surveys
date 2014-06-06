@@ -78,6 +78,17 @@ class Proposition extends CActiveRecord
 			'trigger_target_type' => 'Trigger Target Type',
 		);
 	}
+    
+    
+    public function answeredProposition($participationId)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->addCondition('participation_id=:participation_id');
+        $criteria->addCondition('proposition_id=:proposition_id');
+        $criteria->params = array(':proposition_id' => $this->id, ':participation_id' => $participationId); // TODO: Get automatically the good participation id
+        return AnsweredProposition::model()->find($criteria);
+    }
+    
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.

@@ -43,23 +43,24 @@ class MultipleChoiceQuestion extends Question
         
         $date = new DateTime();
         
-        foreach ($propositionsId as $pid) {
-            
-            $answeredProposition = new AnsweredProposition;
-            $answeredProposition->proposition_id = $pid;
-            $answeredProposition->participation_id = $participation->id;
-            $answeredProposition->body = ( isset($userInputs[$pid]) ? $userInputs[$pid] : null);
-            
-            $answeredProposition->updated_at = $date->format('Y-m-d H:i:s');
-            $answeredProposition->created_at = $createdAt->format('Y-m-d H:i:s');
-            
-            // Save the answer
-            if (! $answeredProposition->save() ) {
-                $transaction->rollback();
-                return false;
+        if(!empty($propositionsId))
+            foreach ($propositionsId as $pid) {
+                
+                $answeredProposition = new AnsweredProposition;
+                $answeredProposition->proposition_id = $pid;
+                $answeredProposition->participation_id = $participation->id;
+                $answeredProposition->body = ( isset($userInputs[$pid]) ? $userInputs[$pid] : null);
+                
+                $answeredProposition->updated_at = $date->format('Y-m-d H:i:s');
+                $answeredProposition->created_at = $createdAt->format('Y-m-d H:i:s');
+                
+                // Save the answer
+                if (! $answeredProposition->save() ) {
+                    $transaction->rollback();
+                    return false;
+                }
+                
             }
-            
-        }
         
         $transaction->commit();
         return true;
