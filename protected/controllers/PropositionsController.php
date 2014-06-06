@@ -78,7 +78,7 @@ class PropositionsController extends Controller
     public function actionView($id)
     {
         $this->render('view',array(
-            'proposition'=>$this->loadProposition($id),
+            'proposition'=>$this->loadProposition($id)
         ));
     }
 
