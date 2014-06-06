@@ -232,3 +232,7 @@ div.search-form
 .locked-element {
 	background-color: #F2CECE;
 }
+
+.view a {
+	color: #111;
+}
