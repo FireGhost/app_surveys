@@ -62,7 +62,7 @@ class SurveysController extends Controller
             'survey'=>$survey,
         ));
     }
-
+    
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('Survey');
