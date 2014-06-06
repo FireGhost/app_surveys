@@ -107,8 +107,9 @@ class TakingsController extends Controller
             }
         }
         
+        $dataProvider=new CActiveDataProvider('Taking');
         $this->render('index',array(
-            'taking'=>$taking,
+            'dataProvider'=>$dataProvider,
         ));
      }
     
