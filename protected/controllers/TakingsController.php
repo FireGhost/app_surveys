@@ -71,6 +71,15 @@ class TakingsController extends Controller
     }
     
     
+    public function actionIndex()
+    {
+        $dataProvider=new CActiveDataProvider('Taking');
+        $this->render('index',array(
+            'dataProvider'=>$dataProvider,
+        ));
+    }
+    
+    
     /**
      * Will save the answers of a respondant
      */
