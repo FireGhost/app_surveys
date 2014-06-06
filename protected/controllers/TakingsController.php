@@ -34,6 +34,30 @@ class TakingsController extends Controller
 	}
     
     /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     */
+    public function actionUpdate($id)
+    {
+        $taking=$this->loadTaking($id);
+
+        // Uncomment the following line if AJAX validation is needed
+        // $this->performAjaxValidation($proposition);
+
+        if(isset($_POST['Taking']))
+        {
+            $taking->attributes=$_POST['Taking'];
+            if($taking->save())
+                $this->redirect(array('surveys/view','id'=>$taking->survey->id));
+        }
+
+        $this->render('update',array(
+            'taking'=>$taking,
+        ));
+    }
+    
+    /**
      * Display the taking to respond
      */
     public function actionView($id)
