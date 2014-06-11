@@ -236,3 +236,7 @@ div.search-form
 .view a {
 	color: #111;
 }
+
+.rank_move {
+	cursor:move;
+}

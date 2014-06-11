@@ -88,12 +88,12 @@
             
             if (!empty($propositionsItems)) {
                 
-                echo '<ul id="'. 'question_'.  $question->id .'">';
+                echo '<ol id="'. 'question_'.  $question->id .'" class="rank_move">';
                 ksort($propositionsItems);
                 foreach($propositionsItems as $position=>$content) {
                     echo '<li id="'. $propositionsIds[$position] .'">'. $content .'</li>';
                 }
-                echo '</ul>';
+                echo '</ol>';
             
             
                 if (!$isLocked) {
