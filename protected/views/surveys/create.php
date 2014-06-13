@@ -11,9 +11,10 @@
         echo CHtml::label('Description du sondage', 'Survey[description]');
         echo CHtml::textField('Survey[description]', '');
         
-        echo CHtml::dropDownList('Survey[created_for_id]', null, $users, array('class'=>'chosen-select'));
+        echo CHtml::label('Pour qui créez-vous ce sondage?', 'Survey[created_for_id]');
+        echo CHtml::dropDownList('Survey[created_for_id]', null, $users, array('class'=>'chosen-select')); //todo: label + champ vide
 
         echo CHtml::submitButton('Envoyer');
     echo CHtml::endForm();
-    echo '<script type="text/javascript">$(".chosen-select").chosen()</script>'
+    echo '<script type="text/javascript">$(".chosen-select").chosen({allow_single_deselect:true})</script>'
 ?>

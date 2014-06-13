@@ -38,7 +38,7 @@ class SurveysController extends Controller
 		else {
 			$intranetUser = new IntranetUser;
 	        $usersObject = $intranetUser->find("all");
-
+	        $users[0] = "";
 	        foreach ($usersObject as $userSimple) {
 	        	$users[$userSimple->id] = $userSimple->name;
         	}
