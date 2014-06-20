@@ -67,7 +67,20 @@ class TakingsController extends Controller
      */
     public function actionView($id)
     {
+        /*
         $this->render('view',array(
+            'taking'=>$this->loadTaking($id),
+        ));
+        */
+        $taking = $this->loadTaking($id);
+        $dataProvider = new CActiveDataProvider('QuestionGroup', array(
+            'criteria' => array(
+                'condition' => 'survey_id='. $taking->survey->id
+            ),
+            'pagination' => array('pageSize' => 1)
+        ));
+        $this->render('view',array(
+            'dataProvider'=>$dataProvider,
             'taking'=>$this->loadTaking($id),
         ));
     }
@@ -83,34 +96,46 @@ class TakingsController extends Controller
     
     
     /**
-     * Will save the answers of a respondant
+     * Will save the answers of a respondent
+     * @param integer $id the ID of the taking
      */
     public function actionSaveAnswers($id)
     {
         $taking = $this->loadTaking($id);
          
         if (isset($_POST) && !empty($_POST)) {
+            array_filter($_POST['Questions']);
+            Yii::trace("actionSaveAnswers: POST: ". print_r($_POST['Questions'], true));
              
-            $participation = Participation::model()->findByPk(1); // TODO: Get the correct participation
+            //$participation = Participation::model()->findByPk(1); // TODO: Get the correct participation
              
+            /*
             foreach ($_POST['Questions'] as $qid => $data) {
                 if ( $question = $taking->survey->questions( array('condition'=>'questions.id='.$qid) )[0] ) {
                     
                     $userInput = ( isset($_POST['UserInputs'][$qid]) ? $_POST['UserInputs'][$qid] : null );
                     if (! $question->saveAnswer($data, $participation, $userInput) ) {
+                        /*
                         $this->render('view',array(
                             'taking'=>$taking,
                         ));
+                        */
+                        /*
+                        echo "fail";
                     }
+                    echo "good";
                     
                 }
             }
+            */
         }
         
+        /*
         $dataProvider=new CActiveDataProvider('Taking');
         $this->render('index',array(
             'dataProvider'=>$dataProvider,
         ));
+        */
      }
     
 

@@ -1,8 +1,8 @@
 <div class="view">
-    <b><?php echo CHtml::encode($questionGroup->title); ?></b><br />
+    <b><?php echo CHtml::encode($data->title); ?></b><br />
     <?php
-        foreach ($questionGroup->questions as $question) {
+        foreach ($data->questions as $question) {
             echo CController::renderPartial("//questions/viewRespondent", array('question'=>$question));
         }
-    ?>
+?>
 </div>
