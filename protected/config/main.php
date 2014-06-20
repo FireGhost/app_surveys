@@ -47,6 +47,7 @@ return array(
                 'groups/<gid:\d+>/<controller:questions>/<action:\w+>'=>'<controller>/<action>',
                 'questions/<qid:\d+>/<controller:propositions>/<action:\w+>'=>'<controller>/<action>',
                 'surveys/<sid:\d+>/<controller:questionGroups>/<action:\w+>'=>'<controller>/<action>',
+                'surveys/<sid:\d+>/<controller:takings>/<action:\w+>'=>'<controller>/<action>',
                 'questions/<qid:\d+>/<controller:propositions>'=>'<controller>/index',
                 'takings/<tid:\d+>/<controller:participations>'=>'<controller>/index',
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',

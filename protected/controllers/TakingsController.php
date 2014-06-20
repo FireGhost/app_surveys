@@ -8,7 +8,14 @@ class TakingsController extends Controller
 	 */
 	public $layout='//layouts/column2';
     
-    
+    protected $survey;
+
+    public function filters()
+    {
+        return array(
+            'GetSurvey + create'
+        );
+    }
 
 	/**
 	 * Creates a new model.
@@ -23,15 +30,49 @@ class TakingsController extends Controller
 
 		if(isset($_POST['Taking']))
 		{
-			$taking->survey_id = $this->survey_id;
+			$taking->survey_id = $this->survey->id;
+
 			$taking->state = "created";
 			$taking->attributes=$_POST['Taking'];
+
 			if($taking->save())
+            {
+                if (isset($_POST['Taking']['target_classes']))
+                {
+                    $target_classes = $_POST['Taking']['target_classes'];
+                    foreach ($target_classes as $target_class) {
+                        $intranetClass = new IntranetClass;
+                        $classStudents = $intranetClass->find($target_class, array('alter[include]'=>'students'));
+                        foreach ($classStudents->students as $student) {
+                            $participation = new Participation;
+                            $participation->type = ($taking->anonymous == 0) ? "KnownParticipation" : "AnonymousParticipation";
+                            $participation->taking_id = $taking->id;
+                            $participation->person_id = $student->id;
+                            $participation->person_type = $student->type;
+                            $participation->concrete_class = $target_class;
+                            $participation->email = $student->email;
+                            $participation->save();
+                        }
+                    }
+                }
+                //throw new CHttpException(44, print_r($taking));
 				$this->redirect(array('view','id'=>$taking->id));
+            }
 		}
+        else
+        {
+            $intranetClass = new IntranetClass;
+            $classesObject = $intranetClass->find("all");
+            $targetClasses[0] = "";
+            foreach ($classesObject as $classSimple) {
+                $targetClasses[$classSimple->id] = $classSimple->name;
+            }
+        }
 
 		$this->render('create',array(
 			'taking'=>$taking,
+            'targetClasses'=>$targetClasses,
+            //'targetPeople'=>$targetPeople,
 		));
 	}
     
@@ -139,10 +180,27 @@ class TakingsController extends Controller
         $taking = $this->loadTaking($id);
         
         $date = new DateTime();
-        if ($date->format('Y-m-d H:i:s') > $taking->ends_at)
+        if ($date->format('Y-m-d H:i:s') > $taking->ends_at && !empty($taking->ends_at))
             return true;
         else
             return false;
+    }
+
+
+    /**
+     * Load the survey specified in the URL
+     */
+    public function filterGetSurvey($filterChain)
+    {
+        // Take the good questionGroup id from the survey/update page and verify it
+        if (isset($_GET['sid'])) {
+            if (!($this->survey = Survey::model()->findByPk($_GET['sid'])))
+                throw new CHttpException(404, 'The survey assiocated to this question group does not exist. To create a question group, use the link in the survey edit page.');
+        }
+        else
+            throw new CHttpException(404, 'The survey ID is not specified. To create a question group, use the link in the survey edit page.');
+        
+        $filterChain->run();
     }
     
 }

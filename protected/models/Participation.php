@@ -81,6 +81,7 @@ class Participation extends CActiveRecord
 			'person_type' => 'Person Type',
 			'concrete_class' => 'Concrete Class',
 			'section' => 'Section',
+			'email' => 'e-mail',
 		);
 	}
 
