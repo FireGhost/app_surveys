@@ -16,5 +16,5 @@
 
         echo CHtml::submitButton('Envoyer');
     echo CHtml::endForm();
-    echo '<script type="text/javascript">$(".chosen-select").chosen({allow_single_deselect:true})</script>'
+    echo '<script type="text/javascript">$(".chosen-select").chosen({allow_single_deselect:true})</script>';
 ?>
