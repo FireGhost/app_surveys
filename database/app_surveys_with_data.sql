@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2014 at 10:55 AM
--- Server version: 5.6.11
--- PHP Version: 5.5.1
+-- Generation Time: Jun 24, 2014 at 11:11 AM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `answered_propositions` (
   PRIMARY KEY (`id`),
   KEY `fk_answered_propositions_propositions1_idx` (`proposition_id`),
   KEY `fk_answered_propositions_participation_idx` (`participation_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=62 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=63 ;
 
 --
 -- Dumping data for table `answered_propositions`
@@ -97,7 +97,8 @@ INSERT INTO `answered_propositions` (`id`, `participation_id`, `proposition_id`,
 (58, 17, 41, NULL, 3, '2013-05-08 14:59:06', '2013-05-08 14:59:06'),
 (59, 17, 85, NULL, 4, '2013-05-08 14:59:06', '2013-05-08 14:59:06'),
 (60, 17, 89, NULL, 5, '2013-05-08 14:59:06', '2013-05-08 14:59:06'),
-(61, 17, 100, 'asd fasdfa sdfa ,xfgb.', 6, '2013-05-08 14:59:06', '2013-05-08 14:59:06');
+(61, 17, 100, 'asd fasdfa sdfa ,xfgb.', 6, '2013-05-08 14:59:06', '2013-05-08 14:59:06'),
+(62, 1, 117, NULL, NULL, '0000-00-00 00:00:00', '2014-06-24 10:38:00');
 
 -- --------------------------------------------------------
 
@@ -114,115 +115,146 @@ CREATE TABLE IF NOT EXISTS `participations` (
   `person_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `concrete_class` int(11) DEFAULT NULL,
   `section` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_participations_takings1_idx` (`taking_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=101 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=131 ;
 
 --
 -- Dumping data for table `participations`
 --
 
-INSERT INTO `participations` (`id`, `type`, `taking_id`, `person_id`, `participant_token`, `person_type`, `concrete_class`, `section`) VALUES
-(1, 'AnonymousParticipation', 32, NULL, '31E36933-F931-4F06-DDEB-7E074998F037', NULL, NULL, NULL),
-(2, 'AnonymousParticipation', 7, NULL, '84C3C7D1-C912-11BA-EF41-F0D2DB8C0749', NULL, NULL, NULL),
-(3, 'AnonymousParticipation', 50, NULL, 'F2171D4C-4000-0BE9-E4DA-20CE002508DE', NULL, NULL, NULL),
-(4, 'AnonymousParticipation', 2, NULL, 'CBC50EA9-101C-BEEF-B738-6B3B3886B9DD', NULL, NULL, NULL),
-(5, 'AnonymousParticipation', 16, NULL, 'EDF41A4A-E664-6B93-F52A-214A40707E18', NULL, NULL, NULL),
-(6, 'AnonymousParticipation', 45, NULL, 'D31AC120-7254-19AA-A848-429374F5FCE3', NULL, NULL, NULL),
-(7, 'AnonymousParticipation', 88, NULL, 'A0D88BAE-D722-71D0-3A87-A576307907AA', NULL, NULL, NULL),
-(8, 'AnonymousParticipation', 7, NULL, '4CFEBA0B-1A0E-88B9-CE59-A0A8D5FFA1AF', NULL, NULL, NULL),
-(9, 'AnonymousParticipation', 15, NULL, 'A5296981-EC69-3EE7-9A3F-B48CE8C080F7', NULL, NULL, NULL),
-(10, 'AnonymousParticipation', 32, NULL, '40814F56-BDE0-296F-AEA2-34F2EBDC1AC1', NULL, NULL, NULL),
-(11, 'AnonymousParticipation', 80, NULL, '752ED0D2-0DA2-6099-F06A-DA647A7BFFBA', NULL, NULL, NULL),
-(12, 'AnonymousParticipation', 66, NULL, '5CC35B5B-83C7-3655-9A20-199486AA530C', NULL, NULL, NULL),
-(13, 'AnonymousParticipation', 81, NULL, '10AC6959-0F62-B537-42DE-D2FE2EB7FEFB', NULL, NULL, NULL),
-(14, 'AnonymousParticipation', 2, NULL, '788939D4-3CDC-7468-3BA2-62C0DF74B5CF', NULL, NULL, NULL),
-(15, 'AnonymousParticipation', 28, NULL, 'F957571B-C3E7-2328-88B0-936D055E35DF', NULL, NULL, NULL),
-(16, 'AnonymousParticipation', 53, NULL, '9A9C7097-4E6F-1E96-30FF-21F835B06D7F', NULL, NULL, NULL),
-(17, 'AnonymousParticipation', 85, NULL, '7A8E60E2-3C3B-EB80-7CA9-BD1848BA5222', NULL, NULL, NULL),
-(18, 'AnonymousParticipation', 50, NULL, 'FDA5A8D8-DE9B-699D-8562-06436E2AC343', NULL, NULL, NULL),
-(19, 'AnonymousParticipation', 39, NULL, 'EA3C959A-5047-C3F8-BAC4-2706648583E0', NULL, NULL, NULL),
-(20, 'AnonymousParticipation', 84, NULL, '0A95BAC2-ECA3-2253-6904-D94312644252', NULL, NULL, NULL),
-(21, 'AnonymousParticipation', 66, NULL, '68EEECDF-3F64-F50C-0219-531F0E414CC1', NULL, NULL, NULL),
-(22, 'AnonymousParticipation', 11, NULL, '2C5EC654-2DE4-049C-9699-469F29EF9EC4', NULL, NULL, NULL),
-(23, 'AnonymousParticipation', 1, NULL, 'B5EFCB1D-F053-D074-2812-89599FF7EF72', NULL, NULL, NULL),
-(24, 'AnonymousParticipation', 88, NULL, '85F86F9E-C930-EC3F-43E1-2F8EAB67CFC5', NULL, NULL, NULL),
-(25, 'AnonymousParticipation', 53, NULL, '85C385EB-0D24-A2FE-EBA7-7BFA2B9284EB', NULL, NULL, NULL),
-(26, 'AnonymousParticipation', 39, NULL, '1CE3AABB-6EA6-425A-2A40-0BE27A4E3986', NULL, NULL, NULL),
-(27, 'AnonymousParticipation', 49, NULL, '3B551944-3DE7-C37A-7409-8FFB97C673FD', NULL, NULL, NULL),
-(28, 'AnonymousParticipation', 5, NULL, '9CC77B8C-ABCB-1370-D014-DD8DEC16E373', NULL, NULL, NULL),
-(29, 'AnonymousParticipation', 37, NULL, '8A04D2E9-34FC-E1C2-D9D7-DF25864FD653', NULL, NULL, NULL),
-(30, 'AnonymousParticipation', 81, NULL, '73CEFB04-DA1F-9593-0D8A-4CCE29A7537B', NULL, NULL, NULL),
-(31, 'AnonymousParticipation', 40, NULL, '1FCC44FD-8AE7-23DF-AAF1-447B6AB55FD4', NULL, NULL, NULL),
-(32, 'AnonymousParticipation', 3, NULL, 'D1F98474-19ED-43D5-BDBA-A6A127A8F3C8', NULL, NULL, NULL),
-(33, 'AnonymousParticipation', 81, NULL, '56AC7ADF-4286-2A60-A3BE-F488E77D855C', NULL, NULL, NULL),
-(34, 'AnonymousParticipation', 84, NULL, '02191204-E25C-C4BB-2853-74D86F520D61', NULL, NULL, NULL),
-(35, 'AnonymousParticipation', 78, NULL, '94DB09E4-34CA-8FB3-D3CA-4235BF3E4559', NULL, NULL, NULL),
-(36, 'AnonymousParticipation', 41, NULL, '0AF5DC4A-2349-69D7-1799-81948B94FCCE', NULL, NULL, NULL),
-(37, 'AnonymousParticipation', 37, NULL, '983CC91E-B8B4-BED1-D8EF-F0338CA6481E', NULL, NULL, NULL),
-(38, 'AnonymousParticipation', 49, NULL, '3A50B1CE-B27C-CD4E-15FC-5289A4B6C4F8', NULL, NULL, NULL),
-(39, 'AnonymousParticipation', 35, NULL, '129F87D3-AFEF-06C2-5DED-E0A7C4972FB3', NULL, NULL, NULL),
-(40, 'AnonymousParticipation', 93, NULL, '3A8A0D6D-7710-B7B5-C3F0-FE767FF0DA44', NULL, NULL, NULL),
-(41, 'AnonymousParticipation', 78, NULL, '087F7F15-8C75-2B6C-8438-76D51FCED71F', NULL, NULL, NULL),
-(42, 'AnonymousParticipation', 98, NULL, 'AFD34D1E-DEAA-582E-D49C-AD5437DACE64', NULL, NULL, NULL),
-(43, 'AnonymousParticipation', 81, NULL, '9DD0DFE0-69BE-1EB9-A0A8-D45F62D5F413', NULL, NULL, NULL),
-(44, 'AnonymousParticipation', 15, NULL, '9564212E-6659-8501-0FCD-B09053898DC8', NULL, NULL, NULL),
-(45, 'AnonymousParticipation', 47, NULL, 'F34A1DF8-3FA3-348A-A57B-A2A042EB8028', NULL, NULL, NULL),
-(46, 'AnonymousParticipation', 30, NULL, 'A9B3C85B-1742-CDCC-5A11-16CDE1F1E86C', NULL, NULL, NULL),
-(47, 'AnonymousParticipation', 50, NULL, '2CD2ED87-92B5-DA29-B74B-A71EA12FCBA0', NULL, NULL, NULL),
-(48, 'AnonymousParticipation', 15, NULL, '4C45797A-2826-088C-7A12-B06FC0D48385', NULL, NULL, NULL),
-(49, 'AnonymousParticipation', 81, NULL, 'AB266FE2-C326-476D-B5F0-23E47923DFD3', NULL, NULL, NULL),
-(50, 'AnonymousParticipation', 58, NULL, '6C397C67-6CBA-52E8-B0C0-76F6E2F9E8A6', NULL, NULL, NULL),
-(51, 'KnownParticipation', 97, 8050, NULL, '', 1243, 'es'),
-(52, 'KnownParticipation', 82, 5087, NULL, '', 1243, 'es'),
-(53, 'KnownParticipation', 10, 8358, NULL, 'Collaborators', 1243, ''),
-(54, 'KnownParticipation', 9, 2740, NULL, 'Collaborators', 0, ''),
-(55, 'KnownParticipation', 59, 1380, NULL, 'Students', 1243, 'essc'),
-(56, 'KnownParticipation', 86, 9885, NULL, '', 1243, 'es'),
-(57, 'KnownParticipation', 24, 1421, NULL, 'Collaborators', 0, ''),
-(58, 'KnownParticipation', 33, 6775, NULL, 'Collaborators', 0, 'es'),
-(59, 'KnownParticipation', 59, 5920, NULL, 'Collaborators', 0, 'esy'),
-(60, 'KnownParticipation', 59, 8288, NULL, '', 1277, 'essc'),
-(61, 'KnownParticipation', 8, 9207, NULL, 'Collaborators', 1244, 'essc'),
-(62, 'KnownParticipation', 14, 9856, NULL, '', 1244, ''),
-(63, 'KnownParticipation', 68, 8820, NULL, '', 1244, ''),
-(64, 'KnownParticipation', 36, 6396, NULL, 'Collaborators', 0, 'essc'),
-(65, 'KnownParticipation', 33, 7935, NULL, '', 1243, 'esy'),
-(66, 'KnownParticipation', 59, 9058, NULL, '', 1277, 'essc'),
-(67, 'KnownParticipation', 10, 2171, NULL, 'Students', 1244, 'essc'),
-(68, 'KnownParticipation', 97, 2417, NULL, '', 0, 'es'),
-(69, 'KnownParticipation', 29, 7687, NULL, 'Collaborators', 1243, 'es'),
-(70, 'KnownParticipation', 25, 8998, NULL, 'Students', 1277, ''),
-(71, 'KnownParticipation', 12, 7603, NULL, 'Students', 1244, 'essc'),
-(72, 'KnownParticipation', 29, 6342, NULL, 'Students', 0, ''),
-(73, 'KnownParticipation', 25, 5724, NULL, 'Students', 0, ''),
-(74, 'KnownParticipation', 74, 5936, NULL, 'Students', 0, 'es'),
-(75, 'KnownParticipation', 57, 1097, NULL, '', 0, 'es'),
-(76, 'KnownParticipation', 29, 4435, NULL, '', 0, 'es'),
-(77, 'KnownParticipation', 21, 1981, NULL, 'Students', 0, 'esy'),
-(78, 'KnownParticipation', 86, 2242, NULL, '', 1243, ''),
-(79, 'KnownParticipation', 96, 2949, NULL, '', 1277, 'essc'),
-(80, 'KnownParticipation', 68, 9761, NULL, '', 1277, ''),
-(81, 'KnownParticipation', 65, 8856, NULL, 'Collaborators', 1244, 'esy'),
-(82, 'KnownParticipation', 43, 9586, NULL, '', 0, 'es'),
-(83, 'KnownParticipation', 90, 9692, NULL, '', 1277, 'esy'),
-(84, 'KnownParticipation', 65, 7252, NULL, '', 1244, 'es'),
-(85, 'KnownParticipation', 9, 7201, NULL, '', 0, 'es'),
-(86, 'KnownParticipation', 38, 2141, NULL, 'Students', 0, ''),
-(87, 'KnownParticipation', 69, 2443, NULL, 'Students', 0, ''),
-(88, 'KnownParticipation', 25, 4413, NULL, '', 0, 'essc'),
-(89, 'KnownParticipation', 65, 9560, NULL, 'Students', 0, 'essc'),
-(90, 'KnownParticipation', 70, 2121, NULL, 'Students', 1243, ''),
-(91, 'KnownParticipation', 72, 2884, NULL, 'Students', 1243, ''),
-(92, 'KnownParticipation', 95, 8946, NULL, 'Students', 0, 'esy'),
-(93, 'KnownParticipation', 95, 2815, NULL, '', 1244, ''),
-(94, 'KnownParticipation', 63, 5650, NULL, 'Collaborators', 1277, 'es'),
-(95, 'KnownParticipation', 59, 3283, NULL, 'Collaborators', 0, ''),
-(96, 'KnownParticipation', 21, 1295, NULL, '', 1243, ''),
-(97, 'KnownParticipation', 82, 7692, NULL, 'Students', 0, ''),
-(98, 'KnownParticipation', 38, 9373, NULL, 'Collaborators', 1243, 'esy'),
-(99, 'KnownParticipation', 61, 6354, NULL, 'Collaborators', 0, ''),
-(100, 'KnownParticipation', 73, 4141, NULL, 'Collaborators', 1244, '');
+INSERT INTO `participations` (`id`, `type`, `taking_id`, `person_id`, `participant_token`, `person_type`, `concrete_class`, `section`, `email`) VALUES
+(1, 'AnonymousParticipation', 32, NULL, '31E36933-F931-4F06-DDEB-7E074998F037', NULL, NULL, NULL, ''),
+(2, 'AnonymousParticipation', 7, NULL, '84C3C7D1-C912-11BA-EF41-F0D2DB8C0749', NULL, NULL, NULL, ''),
+(3, 'AnonymousParticipation', 50, NULL, 'F2171D4C-4000-0BE9-E4DA-20CE002508DE', NULL, NULL, NULL, ''),
+(4, 'AnonymousParticipation', 2, NULL, 'CBC50EA9-101C-BEEF-B738-6B3B3886B9DD', NULL, NULL, NULL, ''),
+(5, 'AnonymousParticipation', 16, NULL, 'EDF41A4A-E664-6B93-F52A-214A40707E18', NULL, NULL, NULL, ''),
+(6, 'AnonymousParticipation', 45, NULL, 'D31AC120-7254-19AA-A848-429374F5FCE3', NULL, NULL, NULL, ''),
+(7, 'AnonymousParticipation', 88, NULL, 'A0D88BAE-D722-71D0-3A87-A576307907AA', NULL, NULL, NULL, ''),
+(8, 'AnonymousParticipation', 7, NULL, '4CFEBA0B-1A0E-88B9-CE59-A0A8D5FFA1AF', NULL, NULL, NULL, ''),
+(9, 'AnonymousParticipation', 15, NULL, 'A5296981-EC69-3EE7-9A3F-B48CE8C080F7', NULL, NULL, NULL, ''),
+(10, 'AnonymousParticipation', 32, NULL, '40814F56-BDE0-296F-AEA2-34F2EBDC1AC1', NULL, NULL, NULL, ''),
+(11, 'AnonymousParticipation', 80, NULL, '752ED0D2-0DA2-6099-F06A-DA647A7BFFBA', NULL, NULL, NULL, ''),
+(12, 'AnonymousParticipation', 66, NULL, '5CC35B5B-83C7-3655-9A20-199486AA530C', NULL, NULL, NULL, ''),
+(13, 'AnonymousParticipation', 81, NULL, '10AC6959-0F62-B537-42DE-D2FE2EB7FEFB', NULL, NULL, NULL, ''),
+(14, 'AnonymousParticipation', 2, NULL, '788939D4-3CDC-7468-3BA2-62C0DF74B5CF', NULL, NULL, NULL, ''),
+(15, 'AnonymousParticipation', 28, NULL, 'F957571B-C3E7-2328-88B0-936D055E35DF', NULL, NULL, NULL, ''),
+(16, 'AnonymousParticipation', 53, NULL, '9A9C7097-4E6F-1E96-30FF-21F835B06D7F', NULL, NULL, NULL, ''),
+(17, 'AnonymousParticipation', 85, NULL, '7A8E60E2-3C3B-EB80-7CA9-BD1848BA5222', NULL, NULL, NULL, ''),
+(18, 'AnonymousParticipation', 50, NULL, 'FDA5A8D8-DE9B-699D-8562-06436E2AC343', NULL, NULL, NULL, ''),
+(19, 'AnonymousParticipation', 39, NULL, 'EA3C959A-5047-C3F8-BAC4-2706648583E0', NULL, NULL, NULL, ''),
+(20, 'AnonymousParticipation', 84, NULL, '0A95BAC2-ECA3-2253-6904-D94312644252', NULL, NULL, NULL, ''),
+(21, 'AnonymousParticipation', 66, NULL, '68EEECDF-3F64-F50C-0219-531F0E414CC1', NULL, NULL, NULL, ''),
+(22, 'AnonymousParticipation', 11, NULL, '2C5EC654-2DE4-049C-9699-469F29EF9EC4', NULL, NULL, NULL, ''),
+(23, 'AnonymousParticipation', 1, NULL, 'B5EFCB1D-F053-D074-2812-89599FF7EF72', NULL, NULL, NULL, ''),
+(24, 'AnonymousParticipation', 88, NULL, '85F86F9E-C930-EC3F-43E1-2F8EAB67CFC5', NULL, NULL, NULL, ''),
+(25, 'AnonymousParticipation', 53, NULL, '85C385EB-0D24-A2FE-EBA7-7BFA2B9284EB', NULL, NULL, NULL, ''),
+(26, 'AnonymousParticipation', 39, NULL, '1CE3AABB-6EA6-425A-2A40-0BE27A4E3986', NULL, NULL, NULL, ''),
+(27, 'AnonymousParticipation', 49, NULL, '3B551944-3DE7-C37A-7409-8FFB97C673FD', NULL, NULL, NULL, ''),
+(28, 'AnonymousParticipation', 5, NULL, '9CC77B8C-ABCB-1370-D014-DD8DEC16E373', NULL, NULL, NULL, ''),
+(29, 'AnonymousParticipation', 37, NULL, '8A04D2E9-34FC-E1C2-D9D7-DF25864FD653', NULL, NULL, NULL, ''),
+(30, 'AnonymousParticipation', 81, NULL, '73CEFB04-DA1F-9593-0D8A-4CCE29A7537B', NULL, NULL, NULL, ''),
+(31, 'AnonymousParticipation', 40, NULL, '1FCC44FD-8AE7-23DF-AAF1-447B6AB55FD4', NULL, NULL, NULL, ''),
+(32, 'AnonymousParticipation', 3, NULL, 'D1F98474-19ED-43D5-BDBA-A6A127A8F3C8', NULL, NULL, NULL, ''),
+(33, 'AnonymousParticipation', 81, NULL, '56AC7ADF-4286-2A60-A3BE-F488E77D855C', NULL, NULL, NULL, ''),
+(34, 'AnonymousParticipation', 84, NULL, '02191204-E25C-C4BB-2853-74D86F520D61', NULL, NULL, NULL, ''),
+(35, 'AnonymousParticipation', 78, NULL, '94DB09E4-34CA-8FB3-D3CA-4235BF3E4559', NULL, NULL, NULL, ''),
+(36, 'AnonymousParticipation', 41, NULL, '0AF5DC4A-2349-69D7-1799-81948B94FCCE', NULL, NULL, NULL, ''),
+(37, 'AnonymousParticipation', 37, NULL, '983CC91E-B8B4-BED1-D8EF-F0338CA6481E', NULL, NULL, NULL, ''),
+(38, 'AnonymousParticipation', 49, NULL, '3A50B1CE-B27C-CD4E-15FC-5289A4B6C4F8', NULL, NULL, NULL, ''),
+(39, 'AnonymousParticipation', 35, NULL, '129F87D3-AFEF-06C2-5DED-E0A7C4972FB3', NULL, NULL, NULL, ''),
+(40, 'AnonymousParticipation', 93, NULL, '3A8A0D6D-7710-B7B5-C3F0-FE767FF0DA44', NULL, NULL, NULL, ''),
+(41, 'AnonymousParticipation', 78, NULL, '087F7F15-8C75-2B6C-8438-76D51FCED71F', NULL, NULL, NULL, ''),
+(42, 'AnonymousParticipation', 98, NULL, 'AFD34D1E-DEAA-582E-D49C-AD5437DACE64', NULL, NULL, NULL, ''),
+(43, 'AnonymousParticipation', 81, NULL, '9DD0DFE0-69BE-1EB9-A0A8-D45F62D5F413', NULL, NULL, NULL, ''),
+(44, 'AnonymousParticipation', 15, NULL, '9564212E-6659-8501-0FCD-B09053898DC8', NULL, NULL, NULL, ''),
+(45, 'AnonymousParticipation', 47, NULL, 'F34A1DF8-3FA3-348A-A57B-A2A042EB8028', NULL, NULL, NULL, ''),
+(46, 'AnonymousParticipation', 30, NULL, 'A9B3C85B-1742-CDCC-5A11-16CDE1F1E86C', NULL, NULL, NULL, ''),
+(47, 'AnonymousParticipation', 50, NULL, '2CD2ED87-92B5-DA29-B74B-A71EA12FCBA0', NULL, NULL, NULL, ''),
+(48, 'AnonymousParticipation', 15, NULL, '4C45797A-2826-088C-7A12-B06FC0D48385', NULL, NULL, NULL, ''),
+(49, 'AnonymousParticipation', 81, NULL, 'AB266FE2-C326-476D-B5F0-23E47923DFD3', NULL, NULL, NULL, ''),
+(50, 'AnonymousParticipation', 58, NULL, '6C397C67-6CBA-52E8-B0C0-76F6E2F9E8A6', NULL, NULL, NULL, ''),
+(51, 'KnownParticipation', 97, 8050, NULL, '', 1243, 'es', ''),
+(52, 'KnownParticipation', 82, 5087, NULL, '', 1243, 'es', ''),
+(53, 'KnownParticipation', 10, 8358, NULL, 'Collaborators', 1243, '', ''),
+(54, 'KnownParticipation', 9, 2740, NULL, 'Collaborators', 0, '', ''),
+(55, 'KnownParticipation', 59, 1380, NULL, 'Students', 1243, 'essc', ''),
+(56, 'KnownParticipation', 86, 9885, NULL, '', 1243, 'es', ''),
+(57, 'KnownParticipation', 24, 1421, NULL, 'Collaborators', 0, '', ''),
+(58, 'KnownParticipation', 33, 6775, NULL, 'Collaborators', 0, 'es', ''),
+(59, 'KnownParticipation', 59, 5920, NULL, 'Collaborators', 0, 'esy', ''),
+(60, 'KnownParticipation', 59, 8288, NULL, '', 1277, 'essc', ''),
+(61, 'KnownParticipation', 8, 9207, NULL, 'Collaborators', 1244, 'essc', ''),
+(62, 'KnownParticipation', 14, 9856, NULL, '', 1244, '', ''),
+(63, 'KnownParticipation', 68, 8820, NULL, '', 1244, '', ''),
+(64, 'KnownParticipation', 36, 6396, NULL, 'Collaborators', 0, 'essc', ''),
+(65, 'KnownParticipation', 33, 7935, NULL, '', 1243, 'esy', ''),
+(66, 'KnownParticipation', 59, 9058, NULL, '', 1277, 'essc', ''),
+(67, 'KnownParticipation', 10, 2171, NULL, 'Students', 1244, 'essc', ''),
+(68, 'KnownParticipation', 97, 2417, NULL, '', 0, 'es', ''),
+(69, 'KnownParticipation', 29, 7687, NULL, 'Collaborators', 1243, 'es', ''),
+(70, 'KnownParticipation', 25, 8998, NULL, 'Students', 1277, '', ''),
+(71, 'KnownParticipation', 12, 7603, NULL, 'Students', 1244, 'essc', ''),
+(72, 'KnownParticipation', 29, 6342, NULL, 'Students', 0, '', ''),
+(73, 'KnownParticipation', 25, 5724, NULL, 'Students', 0, '', ''),
+(74, 'KnownParticipation', 74, 5936, NULL, 'Students', 0, 'es', ''),
+(75, 'KnownParticipation', 57, 1097, NULL, '', 0, 'es', ''),
+(76, 'KnownParticipation', 29, 4435, NULL, '', 0, 'es', ''),
+(77, 'KnownParticipation', 21, 1981, NULL, 'Students', 0, 'esy', ''),
+(78, 'KnownParticipation', 86, 2242, NULL, '', 1243, '', ''),
+(79, 'KnownParticipation', 96, 2949, NULL, '', 1277, 'essc', ''),
+(80, 'KnownParticipation', 68, 9761, NULL, '', 1277, '', ''),
+(81, 'KnownParticipation', 65, 8856, NULL, 'Collaborators', 1244, 'esy', ''),
+(82, 'KnownParticipation', 43, 9586, NULL, '', 0, 'es', ''),
+(83, 'KnownParticipation', 90, 9692, NULL, '', 1277, 'esy', ''),
+(84, 'KnownParticipation', 65, 7252, NULL, '', 1244, 'es', ''),
+(85, 'KnownParticipation', 9, 7201, NULL, '', 0, 'es', ''),
+(86, 'KnownParticipation', 38, 2141, NULL, 'Students', 0, '', ''),
+(87, 'KnownParticipation', 69, 2443, NULL, 'Students', 0, '', ''),
+(88, 'KnownParticipation', 25, 4413, NULL, '', 0, 'essc', ''),
+(89, 'KnownParticipation', 65, 9560, NULL, 'Students', 0, 'essc', ''),
+(90, 'KnownParticipation', 70, 2121, NULL, 'Students', 1243, '', ''),
+(91, 'KnownParticipation', 72, 2884, NULL, 'Students', 1243, '', ''),
+(92, 'KnownParticipation', 95, 8946, NULL, 'Students', 0, 'esy', ''),
+(93, 'KnownParticipation', 95, 2815, NULL, '', 1244, '', ''),
+(94, 'KnownParticipation', 63, 5650, NULL, 'Collaborators', 1277, 'es', ''),
+(95, 'KnownParticipation', 59, 3283, NULL, 'Collaborators', 0, '', ''),
+(96, 'KnownParticipation', 21, 1295, NULL, '', 1243, '', ''),
+(97, 'KnownParticipation', 82, 7692, NULL, 'Students', 0, '', ''),
+(98, 'KnownParticipation', 38, 9373, NULL, 'Collaborators', 1243, 'esy', ''),
+(99, 'KnownParticipation', 61, 6354, NULL, 'Collaborators', 0, '', ''),
+(100, 'KnownParticipation', 73, 4141, NULL, 'Collaborators', 1244, '', ''),
+(101, 'KnownParticipation', 124, 433, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'alban.avdiji@cpnv.ch'),
+(102, 'KnownParticipation', 124, 1770, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'joel.buchs@cpnv.ch'),
+(103, 'KnownParticipation', 124, 3224, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Steven.CATTEAUX@cpnv.ch'),
+(104, 'KnownParticipation', 124, 370, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'nicolas.chaperon@cpnv.ch'),
+(105, 'KnownParticipation', 124, 434, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'nathan.chevalley@cpnv.ch'),
+(106, 'KnownParticipation', 124, 1769, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'elliott.chiaradia@cpnv.ch'),
+(107, 'KnownParticipation', 124, 3231, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Alexandre.DESPONDS@cpnv.ch'),
+(108, 'KnownParticipation', 124, 1764, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'michael.duvoisin@cpnv.ch'),
+(109, 'KnownParticipation', 124, 3242, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Etienne.FORNEY@cpnv.ch'),
+(110, 'KnownParticipation', 124, 3269, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Fabien.LANGUETIN@cpnv.ch'),
+(111, 'KnownParticipation', 124, 3270, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Romain.LANZ@cpnv.ch'),
+(112, 'KnownParticipation', 124, 3284, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Allan.MERMOD@cpnv.ch'),
+(113, 'KnownParticipation', 124, 850, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'olivier.nicole@cpnv.ch'),
+(114, 'KnownParticipation', 124, 1761, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'axel.piaget@cpnv.ch'),
+(115, 'KnownParticipation', 124, 1759, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'elie.turc@cpnv.ch'),
+(116, 'KnownParticipation', 125, 433, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'alban.avdiji@cpnv.ch'),
+(117, 'KnownParticipation', 125, 1770, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'joel.buchs@cpnv.ch'),
+(118, 'KnownParticipation', 125, 3224, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Steven.CATTEAUX@cpnv.ch'),
+(119, 'KnownParticipation', 125, 370, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'nicolas.chaperon@cpnv.ch'),
+(120, 'KnownParticipation', 125, 434, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'nathan.chevalley@cpnv.ch'),
+(121, 'KnownParticipation', 125, 1769, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'elliott.chiaradia@cpnv.ch'),
+(122, 'KnownParticipation', 125, 3231, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Alexandre.DESPONDS@cpnv.ch'),
+(123, 'KnownParticipation', 125, 1764, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'michael.duvoisin@cpnv.ch'),
+(124, 'KnownParticipation', 125, 3242, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Etienne.FORNEY@cpnv.ch'),
+(125, 'KnownParticipation', 125, 3269, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Fabien.LANGUETIN@cpnv.ch'),
+(126, 'KnownParticipation', 125, 3270, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Romain.LANZ@cpnv.ch'),
+(127, 'KnownParticipation', 125, 3284, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'Allan.MERMOD@cpnv.ch'),
+(128, 'KnownParticipation', 125, 850, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'olivier.nicole@cpnv.ch'),
+(129, 'KnownParticipation', 125, 1761, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'axel.piaget@cpnv.ch'),
+(130, 'KnownParticipation', 125, 1759, NULL, 'Cpnv::CurrentStudent', 1243, NULL, 'elie.turc@cpnv.ch');
 
 -- --------------------------------------------------------
 
@@ -242,7 +274,7 @@ CREATE TABLE IF NOT EXISTS `propositions` (
   `trigger_target_type` varchar(63) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_propositions_questions1_idx` (`question_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=117 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=120 ;
 
 --
 -- Dumping data for table `propositions`
@@ -364,7 +396,10 @@ INSERT INTO `propositions` (`id`, `type`, `question_id`, `position`, `title`, `a
 (113, 'OpenedProposition', 3, 112, 'non, feugiat nec, diam. Duis', NULL, NULL, NULL, NULL),
 (114, 'OpenedProposition', 3, 113, 'Integer mollis.', NULL, NULL, NULL, NULL),
 (115, 'ClosedProposition', 3, 114, 'vel pede blandit congue.', NULL, NULL, NULL, NULL),
-(116, 'OpenedProposition', 3, 115, 'nunc est, mollis non,', NULL, NULL, NULL, NULL);
+(116, 'OpenedProposition', 3, 115, 'nunc est, mollis non,', NULL, NULL, NULL, NULL),
+(117, 'ClosedProposition', 103, 1, 'Zurich', NULL, NULL, NULL, NULL),
+(118, 'ClosedProposition', 103, 2, 'Bern', NULL, NULL, NULL, NULL),
+(119, 'ClosedProposition', 103, 3, 'Genève', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -381,7 +416,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `settings` varchar(1023) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_questions_question_groups1_idx` (`question_group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=101 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=104 ;
 
 --
 -- Dumping data for table `questions`
@@ -487,7 +522,10 @@ INSERT INTO `questions` (`id`, `type`, `question_group_id`, `title`, `position`,
 (97, 'RangeQuestion', 75, 'enim mi', 97, '{"min":"4","max":"14","step":"2"}'),
 (98, 'MultipleChoiceQuestion', 4, 'lacus. Aliquam rutrum lorem ac risus. Morbi', 98, '{"min":"3","max":"7"}'),
 (99, 'UniqueChoiceQuestion', 2, 'egestas. Aliquam fringilla cursus purus. Nullam', 99, '[]'),
-(100, 'RangeQuestion', 100, 'mauris id sapien. Cras dolor', 100, '{"min":"1","max":"18","step":"2"}');
+(100, 'RangeQuestion', 100, 'mauris id sapien. Cras dolor', 100, '{"min":"1","max":"18","step":"2"}'),
+(101, 'UniqueChoiceQuestion', 101, 'q1', 1, '[]'),
+(102, 'UniqueChoiceQuestion', 101, 'q2', 2, '[]'),
+(103, 'UniqueChoiceQuestion', 102, 'Quelle est la capitale de la Suisse?', 1, '[]');
 
 -- --------------------------------------------------------
 
@@ -502,7 +540,7 @@ CREATE TABLE IF NOT EXISTS `question_groups` (
   `position` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_question_groups_surveys_idx` (`survey_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=101 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=103 ;
 
 --
 -- Dumping data for table `question_groups`
@@ -608,7 +646,9 @@ INSERT INTO `question_groups` (`id`, `survey_id`, `title`, `position`) VALUES
 (97, 25, 'nulla. In tincidunt congue turpis.', 97),
 (98, 22, 'Nullam feugiat placerat velit.', 98),
 (99, 69, 'a, scelerisque sed, sapien. Nunc pulvinar arcu', 99),
-(100, 30, 'nulla. Integer urna. Vivamus', 100);
+(100, 30, 'nulla. Integer urna. Vivamus', 100),
+(101, 107, 'test', 1),
+(102, 108, 'Groupe 1', 1);
 
 -- --------------------------------------------------------
 
@@ -626,7 +666,7 @@ CREATE TABLE IF NOT EXISTS `surveys` (
   `updated_by_id` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=101 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=109 ;
 
 --
 -- Dumping data for table `surveys`
@@ -732,7 +772,15 @@ INSERT INTO `surveys` (`id`, `title`, `description`, `created_for_id`, `created_
 (97, 'feugiat nec,', 'eleifend egestas. Sed pharetra, felis eget varius ultrices, mauris ipsum', 358, 560, '2013-05-10 01:38:15', 435, '2013-06-01 08:30:00'),
 (98, 'convallis dolor. Quisque', 'Morbi metus. Vivamus euismod urna.', 726, 335, '2013-09-04 04:31:39', 611, '2013-11-22 04:03:06'),
 (99, 'urna justo faucibus lectus, a', 'semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis', 952, 636, '2014-10-16 14:02:14', 230, '2014-01-06 09:30:32'),
-(100, 'consectetuer, cursus et, magna.', 'auctor non, feugiat nec, diam. Duis mi enim, condimentum eget,', 25, 184, '2014-06-13 11:31:20', 414, '2014-04-28 16:43:01');
+(100, 'consectetuer, cursus et, magna.', 'auctor non, feugiat nec, diam. Duis mi enim, condimentum eget,', 25, 184, '2014-06-13 11:31:20', 414, '2014-04-28 16:43:01'),
+(101, 'DAAAAAAAAA', 'BEEEEESST', NULL, NULL, NULL, NULL, NULL),
+(102, 'DA', 'BEST', NULL, NULL, NULL, NULL, NULL),
+(103, 'ZUZUU', 'ZAZAZAZA', NULL, NULL, NULL, NULL, NULL),
+(104, 'adadad', 'awdawdawd', 5415, NULL, NULL, NULL, NULL),
+(105, 'wwwww', 'wwwww', 4627, NULL, NULL, NULL, NULL),
+(106, 'YO', 'what''s up?', 3242, NULL, NULL, NULL, NULL),
+(107, 'qeqeq2eqe', 'eqeqeqeq2eq2', 3284, NULL, '2014-06-06 10:00:33', NULL, NULL),
+(108, 'Hello', 'worlf', 3242, NULL, '2014-06-24 10:35:15', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -750,7 +798,7 @@ CREATE TABLE IF NOT EXISTS `takings` (
   `ends_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_takings_surveys1_idx` (`survey_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=101 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=126 ;
 
 --
 -- Dumping data for table `takings`
@@ -856,7 +904,32 @@ INSERT INTO `takings` (`id`, `survey_id`, `anonymous`, `state`, `comment`, `star
 (97, 98, 0, 'closed', 'Fusce feugiat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam auctor, velit eget laoreet posuere,', '2013-05-04 04:58:02', '2013-05-11 05:58:27'),
 (98, 94, 1, 'finished', 'odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non', '2013-05-08 23:15:19', '2013-05-14 20:58:25'),
 (99, 58, 1, 'created', 'arcu. Morbi sit amet massa. Quisque porttitor eros nec tellus. Nunc lectus pede, ultrices a, auctor non, feugiat', '2013-05-09 05:09:50', '2013-05-11 07:43:23'),
-(100, 47, 0, 'finished', 'lorem, auctor quis, tristique ac, eleifend vitae, erat. Vivamus nisi. Mauris nulla.', '2013-05-07 16:30:06', '2013-05-16 09:00:46');
+(100, 47, 0, 'finished', 'lorem, auctor quis, tristique ac, eleifend vitae, erat. Vivamus nisi. Mauris nulla.', '2013-05-07 16:30:06', '2013-05-16 09:00:46'),
+(101, 1, 0, 'created', 'awdawdawdaw', '2001-01-01 00:00:00', NULL),
+(102, 1, 0, 'created', 'awdawdawd', '2001-01-20 01:00:00', NULL),
+(103, 1, 0, 'created', 'QQQQQQQQQQQQQQQQ', '2001-01-20 01:00:00', NULL),
+(104, 9, 0, 'created', 'awdawdawd', '2001-01-20 01:00:00', NULL),
+(105, 9, 0, 'created', 'awdawd', '2001-01-01 00:00:00', NULL),
+(106, 9, 0, 'created', 'awdawd', '2001-01-01 00:00:00', NULL),
+(107, 9, 0, 'created', 'adwawdadwdw', '2002-02-02 00:00:00', NULL),
+(108, 9, 0, 'created', 'adwawdadwdw', '2002-02-02 00:00:00', NULL),
+(109, 9, 0, 'created', 'awdawdawd', '2002-02-02 00:00:00', NULL),
+(110, 9, 0, 'created', 'awdawdawd', '2002-02-02 00:00:00', NULL),
+(111, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(112, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(113, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(114, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(115, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(116, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(117, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(118, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(119, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(120, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(121, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(122, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(123, 9, 0, 'created', 'Test super sérieux', '2005-05-20 05:00:00', NULL),
+(124, 9, 0, 'created', 'SUPER SERIEUX NUMERO 2', '2003-03-03 00:00:00', NULL),
+(125, 108, 0, 'created', 'Héhéhéhé', '2005-05-20 05:00:00', NULL);
 
 --
 -- Constraints for dumped tables
