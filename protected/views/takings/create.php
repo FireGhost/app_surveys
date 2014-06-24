@@ -4,14 +4,18 @@
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile($baseUrl.'/js/chosen.jquery.min.js');
     $cs->registerCssFile($baseUrl.'/css/chosen.min.css');
+	
+    $cs->registerScriptFile($baseUrl.'/js/jquery.datetimepicker.js');
+    $cs->registerCssFile($baseUrl.'/css/datetimepicker.css');
 
+	
     echo CHtml::beginForm();
     	echo CHtml::label('Enquête anonyme ?', 'Taking[anonymous]'); // TODO : Touver une meilleure définition en Français
     	echo CHtml::radioButtonList('Taking[anonymous]', '0', ['0'=>'Non', '1'=>'Oui']);
         echo CHtml::label("Commentaire", 'Taking[comment]');
         echo CHtml::textField('Taking[comment]', '');
         echo CHtml::label('Date de début', 'Taking[starts_at]');
-        echo CHtml::dateField('Taking[starts_at]',''); //add widget
+        echo CHtml::textField('Taking[starts_at]', '0000-00-00 00:00');
 
         echo CHtml::encode('Participants');
         //radiobuttons select participants type (students, collaborators, classes, (sections/schools?))
@@ -30,3 +34,10 @@
     echo CHtml::endForm();
     echo '<script type="text/javascript">$(".chosen-select").chosen({})</script>';
 ?>
+
+<script>
+    jQuery('#Taking_starts_at').datetimepicker({
+        lang:'fr',
+        format:'d.m.Y H:i:s'    
+    });
+</script>
