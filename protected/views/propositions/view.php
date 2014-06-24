@@ -6,7 +6,7 @@
 <div class="view">
 	<b>Proposition</b><br />
 	<?php echo CHtml::link("Modifier", array('propositions/update', 'id'=>$proposition->id));?>
-	<?php echo CHtml::link("Supprimer", array('delete', 'id'=>$proposition->id));?>
+	<?php echo CHtml::link("Supprimer", array('propositions/delete', 'id'=>$proposition->id));?>
 	<br /> 
 
     <b><?php echo CHtml::encode($proposition->getAttributeLabel('Titre')); ?>:</b>
